@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+  <!--数据库配置信息-->
+  <environments default="dev">
+    <environment id="dev">
+      <transactionManager type="JDBC" />          <!--事务管理器-->
+      <dataSource type="POOLED" >                 <!--数据源-->
+        <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://47.99.212.4:3316/sample_db?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=GMT%2B8&amp;nullCatalogMeansCurrent=true"/>
+        <property name="username" value="sample"/>
+        <property name="password" value="sample"/>
+      </dataSource>
+    </environment>
+  </environments>
+
+  <!--配置mapper文件路径-->
+  <mappers>
+    <mapper resource="mapper"></mapper>
+  </mappers>
+</configuration>
