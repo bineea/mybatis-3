@@ -20,19 +20,19 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.mybatis.mapper.TestMapper">
+<mapper namespace="com.example.mybatis.mapper.TestOpMapper">
 
   <!--sql的唯一标识 应该是由 namespace.id组成：statementId-->
 
-  <select id="findAll" resultType="com.example.mybatis.pojo.Test">
+  <select id="findAll" resultType="com.example.mybatis.pojo.TestOp">
     select * from sample_test;
   </select>
 
-  <select id="findById" resultType="com.example.mybatis.pojo.Test" parameterType="com.example.mybatis.pojo.Test">
+  <select id="findById" resultType="com.example.mybatis.pojo.TestOp" parameterType="com.example.mybatis.pojo.TestOp">
     select * from sample_test where id = #{id};
   </select>
 
-  <update id="updateById" parameterType="com.example.mybatis.pojo.Test">
+  <update id="updateById" parameterType="com.example.mybatis.pojo.TestOp">
     update sample_test set value = #{value}, remark = #{remark} where id = #{id};
   </update>
 
@@ -40,7 +40,7 @@
     delete from sample_test where id = #{id};
   </delete>
 
-  <insert id="insert" parameterType="com.example.mybatis.pojo.Test">
+  <insert id="insert" parameterType="com.example.mybatis.pojo.TestOp">
     insert into sample_test (value, fake_value, remark, create_time)
     values (#{value}, #{fakeValue}, #{remark}, #{createTime});
   </insert>

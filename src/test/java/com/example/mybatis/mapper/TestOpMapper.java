@@ -1,6 +1,6 @@
 package com.example.mybatis.mapper;
 
-import com.example.mybatis.pojo.Test;
+import com.example.mybatis.pojo.TestOp;
 
 import java.util.List;
 
@@ -12,27 +12,27 @@ import java.util.List;
  * @author: <a href=mailto:guowenbin9@jd.com>郭文彬</a><br>
  * @date: 2021/4/26 23:05
  */
-public interface TestMapper {
+public interface TestOpMapper {
 
   /**
    *
    * @return
    */
-  List<Test> findAll();
+  List<TestOp> findAll();
 
   /**
    *
    * @param id
    * @return
    */
-  Test findById(Long id);
+  TestOp findById(Long id);
 
   /**
    *
-   * @param test
+   * @param testOp
    * @return
    */
-  int updateById(Test test);
+  int updateById(TestOp testOp);
 
   /**
    *
@@ -43,8 +43,8 @@ public interface TestMapper {
 
   /**
    *
-   * @param test
+   * @param testOp
    * @return
    */
-  int insert(Test test);
+  int insert(TestOp testOp);
 }

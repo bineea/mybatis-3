@@ -20,6 +20,9 @@
 
     <!--引入映射配置文件-->
     <mappers>
-         <mapper class="com.example.mybatis.mapper.TestMapper"></mapper>
+<!--        使用接口信息进行配置-->
+<!--        <mapper class="com.example.mybatis.mapper.TestMapper"></mapper>-->
+<!--        使用接口所在包进行配置-->
+        <package name="com.example.mybatis.mapper"></package>
     </mappers>
 </configuration>

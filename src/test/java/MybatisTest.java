@@ -13,6 +13,8 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
+import com.example.mybatis.mapper.TestOpMapper;
+import com.example.mybatis.pojo.TestOp;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -43,6 +45,9 @@ public class MybatisTest {
   @Test
   public void testOpenSession() {
     System.out.println(sqlSession.toString());
+    TestOpMapper testOpMapper = sqlSession.getMapper(TestOpMapper.class);
+    TestOp testOp = testOpMapper.findById(1L);
+    System.out.println(testOp.toString());
   }
 
 }

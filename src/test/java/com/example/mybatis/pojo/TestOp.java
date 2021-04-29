@@ -11,12 +11,23 @@ import java.time.LocalDateTime;
  * @author: <a href=mailto:guowenbin9@jd.com>郭文彬</a><br>
  * @date: 2021/4/26 23:00
  */
-public class Test implements Serializable {
+public class TestOp implements Serializable {
   private Long id;
   private Integer value;
   private Integer fakeValue;
   private String remark;
   private LocalDateTime createTime;
+
+  @Override
+  public String toString() {
+    return "TestOp{" +
+      "id=" + id +
+      ", value=" + value +
+      ", fakeValue=" + fakeValue +
+      ", remark='" + remark + '\'' +
+      ", createTime=" + createTime +
+      '}';
+  }
 
   public Long getId() {
     return id;
