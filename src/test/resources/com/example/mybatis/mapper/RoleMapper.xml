@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+       Copyright 2009-2021 the original author or authors.
+
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+
+-->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mybatis.mapper.RoleMapper">
+
+  <!--sql的唯一标识 应该是由 namespace.id组成：statementId-->
+
+  <resultMap id="roleResultMap" type="com.example.mybatis.pojo.Role">
+    <result column="r_id" property="id"></result>
+    <result column="r_name" property="name"></result>
+    <result column="r_list" property="list"></result>
+    <result column="r_info" property="info"></result>
+    <result column="r_system" property="system"></result>
+
+    <collection property="userList" ofType="com.example.mybatis.pojo.User">
+      <result column="u_id" property="id"></result>
+      <result column="u_name" property="name"></result>
+      <result column="u_male" property="male"></result>
+      <result column="u_email" property="email"></result>
+      <result column="u_login_name" property="loginName"></result>
+      <result column="u_pass_wd" property="passwd"></result>
+      <result column="u_status" property="status"></result>
+    </collection>
+  </resultMap>
+
+  <sql id="BaseColumnList">
+    r.id as r_id,
+    r.name as r_name,
+    r.list as r_list,
+    r.info as r_info,
+    r.system as r_system,
+    u.id as u_id,
+    u.name as u_name,
+    u.male as u_male,
+    u.email as u_email,
+    u.login_name as u_login_name,
+    u.pass_wd as u_pass_wd,
+    u.status as u_status
+  </sql>
+
+  <select id="findAll" resultMap="roleResultMap">
+    select
+    <include refid="BaseColumnList" />
+    from sample_role r
+    left join sample_user u
+    on r.id = u.role_id;
+  </select>
+
+  <select id="findById" resultType="com.example.mybatis.pojo.Role">
+    select *
+    from sample_role r
+    where r.id = #{id};
+  </select>
+
+  <select id="findRoleAndUserListById" resultMap="roleResultMap">
+    select
+    <include refid="BaseColumnList" />
+    from sample_role r
+    left join sample_user u
+    on r.id = u.role_id
+    where r.id = #{id};
+  </select>
+
+</mapper>

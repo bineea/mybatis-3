@@ -13,8 +13,12 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
+import com.example.mybatis.mapper.RoleMapper;
 import com.example.mybatis.mapper.TestOpMapper;
+import com.example.mybatis.mapper.UserMapper;
+import com.example.mybatis.pojo.Role;
 import com.example.mybatis.pojo.TestOp;
+import com.example.mybatis.pojo.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -44,11 +48,34 @@ public class MybatisTest {
   }
 
   @Test
-  public void testOpenSession() {
-    System.out.println(sqlSession.toString());
+  public void handleTestOp_findById() {
     TestOpMapper testOpMapper = sqlSession.getMapper(TestOpMapper.class);
     TestOp testOp = testOpMapper.findById(1L);
     System.out.println(testOp.toString());
+  }
+
+  @Test
+  public void handleUser_findById() {
+    UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+    User user = mapper.findById("default");
+    System.out.println("user.getId:"+user.getId());
+    System.out.println("user.getRole:"+user.getRole());
+  }
+
+  @Test
+  public void handleRole_findById() {
+    RoleMapper mapper = sqlSession.getMapper(RoleMapper.class);
+    Role role = mapper.findById("admin");
+    System.out.println("role.getId:"+role.getId());
+    System.out.println("role.getUser:"+role.getUserList());
+  }
+
+  @Test
+  public void handleRole_findRoleAndUserListById() {
+    RoleMapper mapper = sqlSession.getMapper(RoleMapper.class);
+    Role role = mapper.findRoleAndUserListById("admin");
+    System.out.println("role.getId:"+role.getId());
+    System.out.println("role.getUser:"+role.getUserList());
   }
 
 }

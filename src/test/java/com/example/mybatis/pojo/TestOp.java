@@ -12,10 +12,25 @@ import java.time.LocalDateTime;
  * @date: 2021/4/26 23:00
  */
 public class TestOp implements Serializable {
+  /**
+   * 唯一标识
+   */
   private Long id;
+  /**
+   * 数值
+   */
   private Integer value;
+  /**
+   * 虚假数值
+   */
   private Integer fakeValue;
+  /**
+   * 备注
+   */
   private String remark;
+  /**
+   * 创建时间
+   */
   private LocalDateTime createTime;
 
   @Override

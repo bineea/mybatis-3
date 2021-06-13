@@ -3,26 +3,31 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-    <!--environments:运行环境-->
-    <environments default="development">
-        <environment id="development">
-            <!--当前事务交由JDBC进行管理-->
-            <transactionManager type="JDBC"></transactionManager>
-            <!--当前使用mybatis提供的连接池-->
-            <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://47.99.212.4:3316/sample_db?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=GMT%2B8&amp;nullCatalogMeansCurrent=true"/>
-                <property name="username" value="sample"/>
-                <property name="password" value="sample"/>
-            </dataSource>
-        </environment>
-    </environments>
+  <!-- 打印sql语句 -->
+  <settings>
+    <setting name="logImpl" value="STDOUT_LOGGING" />
+  </settings>
 
-    <!--引入映射配置文件-->
-    <mappers>
+  <!--environments:运行环境-->
+  <environments default="development">
+      <environment id="development">
+          <!--当前事务交由JDBC进行管理-->
+          <transactionManager type="JDBC"></transactionManager>
+          <!--当前使用mybatis提供的连接池-->
+          <dataSource type="POOLED">
+              <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+              <property name="url" value="jdbc:mysql://47.99.212.4:3316/sample_db?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=GMT%2B8&amp;nullCatalogMeansCurrent=true"/>
+              <property name="username" value="sample"/>
+              <property name="password" value="sample"/>
+          </dataSource>
+      </environment>
+  </environments>
+
+  <!--引入映射配置文件-->
+  <mappers>
 <!--        使用接口信息进行配置-->
 <!--        <mapper class="com.example.mybatis.mapper.TestMapper"></mapper>-->
 <!--        使用接口所在包进行配置-->
-        <package name="com.example.mybatis.mapper"></package>
-    </mappers>
+      <package name="com.example.mybatis.mapper"></package>
+  </mappers>
 </configuration>
