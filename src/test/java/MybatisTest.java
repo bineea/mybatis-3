@@ -37,6 +37,7 @@ public class MybatisTest {
 
   @Before
   public void openSession() throws IOException {
+    // 记得将配置文件sqlMapperConfig.xml所在的目录resources设置为“Test Resources”类型，否则idea编译时无法识别该目录
     InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapperConfig.xml");
     SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
     sqlSession = sqlSessionFactory.openSession();
