@@ -12,7 +12,7 @@
   <environments default="development">
       <environment id="development">
           <!--当前事务交由JDBC进行管理-->
-          <transactionManager type="JDBC"></transactionManager>
+          <transactionManager type="JDBC"/>
           <!--当前使用mybatis提供的连接池-->
           <dataSource type="POOLED">
               <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
@@ -25,9 +25,12 @@
 
   <!--引入映射配置文件-->
   <mappers>
-<!--        使用接口信息进行配置-->
-<!--        <mapper class="com.example.mybatis.mapper.TestMapper"></mapper>-->
-<!--        使用接口所在包进行配置-->
-      <package name="com.example.mybatis.mapper"></package>
+<!--    使用接口的全限定名进行配置（要求接口与xml文件同包同名）-->
+<!--    <mapper class="com.example.mybatis.mapper.TestMapper"/>-->
+<!--    使用接口所在包路径进行配置（要求接口与xml文件同包同名）-->
+    <package name="com.example.mybatis.mapper"/>
+<!--    使用xml映射文件路径进行配置（无需要求接口与xml文件同包同名）-->
+<!--    <mapper resource="test/TestOpMapper.xml"/>-->
   </mappers>
+
 </configuration>
